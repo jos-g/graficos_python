@@ -16,6 +16,35 @@ idx_max1 = np.argmax( counts1)
 print ("Valor máximo: {}".format( counts1[ idx_max]))
 print ("Intervalo com valor min: ({},{})".format(bins[ idx_min], bins[idx_min - 1]))
 
+#Largura a meia altura
+#Conjunto
+fig0 = plt.figure( figsize=(8,6) )
+
+x_min = 27.0
+x_max = 30.125
+
+counts0, bins, _ = plt.hist( c, bins=8, range=(x_min, x_max) )
+valor_maximo = np.max( counts0 )
+valor_meia_altura = valor_maximo / 2
+print ( "Valor meia altura: {}".format( valor_meia_altura ) )
+
+plt.plot( (x_min,x_max),(valor_meia_altura,valor_meia_altura), 'k-', linewidth=0.5 )
+idx_bin_1 = np.argmax( counts >= valor_meia_altura )
+idx_bin_2 = counts.size - np.argmax( counts[::-1] >= valor_meia_altura ) - 1
+
+val_L_meia_altura_1 = bins[ idx_bin_1 ]
+val_L_meia_altura_2 = bins[ idx_bin_2 + 1 ]
+
+plt.arrow( val_L_meia_altura_1, valor_maximo , 0., -1., head_width=0.025, head_length=0.1 )
+plt.arrow( val_L_meia_altura_2, valor_maximo , 0., -1., head_width=0.025, head_length=0.1 )
+
+plt.xlim( 28.50, 30.25 )
+plt.xlabel( "L (cm)", fontsize=18 )
+plt.ylabel( "Frequência", fontsize=18 )
+
+largura_meia_altura = ( val_L_meia_altura_2 - val_L_meia_altura_1 )
+print ( "Largura a meia altura: {}".format( largura_meia_altura ) )
+
 #Distribuição Gaussiana das Medidas
 x_min = c #numero arbitrário
 x_max = d #numero arbitrário
