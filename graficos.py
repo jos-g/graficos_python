@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 #Histogramas 
-np.sort (array_n) #coluna escolhido
+np.sort(array_n) #coluna escolhido
 his_1 = plt.figure( figsize=(8,8))
 counts1, bins, _ = plt.hist(array_n, bins=9, range(a,b)) # a e b são números arbitrários
 plt.xlim(a,b)
